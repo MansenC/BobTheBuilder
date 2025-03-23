@@ -1,0 +1,11 @@
+{
+  "$schema": "https://raw.githubusercontent.com/ToniMacaroni/RedLoader/main/MetadataSchema.json",
+  "id": "BobTheBuilder",
+  "author": "MansenC",
+  "version": "0.1.0",
+  "description": "A mod that extends the build system of SotF with more materials.",
+  "gameVersion": "1.0.0",
+  "type": "Mod",
+  "platform": "Universal",
+  "url": "..."
+}

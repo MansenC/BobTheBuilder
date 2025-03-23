@@ -1,0 +1,102 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Reference Include="0Harmony">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\net6\0Harmony.dll</HintPath>
+      </Reference>
+      <Reference Include="bolt">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\bolt.dll</HintPath>
+      </Reference>
+      <Reference Include="Bolt.Unity">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\Bolt.Unity.dll</HintPath>
+      </Reference>
+      <Reference Include="bolt.user">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\bolt.user.dll</HintPath>
+      </Reference>
+      <Reference Include="Endnight">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\Endnight.dll</HintPath>
+      </Reference>
+      <Reference Include="Il2CppInterop.Common">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\net6\Il2CppInterop.Common.dll</HintPath>
+      </Reference>
+      <Reference Include="Il2CppInterop.Generator">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\net6\Il2CppInterop.Generator.dll</HintPath>
+      </Reference>
+      <Reference Include="Il2CppInterop.HarmonySupport">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\net6\Il2CppInterop.HarmonySupport.dll</HintPath>
+      </Reference>
+      <Reference Include="Il2CppInterop.Runtime">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\net6\Il2CppInterop.Runtime.dll</HintPath>
+      </Reference>
+      <Reference Include="Il2Cppmscorlib">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\Il2Cppmscorlib.dll</HintPath>
+      </Reference>
+      <Reference Include="RedLoader">
+        <HintPath>$(GameDir)\_RedLoader\net6\RedLoader.dll</HintPath>
+      </Reference>
+      <Reference Include="Sons">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\Sons.dll</HintPath>
+      </Reference>
+      <Reference Include="Sons.Ai.Vail">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\Sons.Ai.Vail.dll</HintPath>
+      </Reference>
+      <Reference Include="Sons.Construction">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\Sons.Construction.dll</HintPath>
+      </Reference>
+      <Reference Include="Sons.Construction.Utils">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\Sons.Construction.Utils.dll</HintPath>
+      </Reference>
+      <Reference Include="Sons.Electricity">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\Sons.Electricity.dll</HintPath>
+      </Reference>
+      <Reference Include="Sons.Environment">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\Sons.Environment.dll</HintPath>
+      </Reference>
+      <Reference Include="Sons.Extensions">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\Sons.Extensions.dll</HintPath>
+      </Reference>
+      <Reference Include="Sons.Item">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\Sons.Item.dll</HintPath>
+      </Reference>
+      <Reference Include="Sons.Lodding">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\Sons.Lodding.dll</HintPath>
+      </Reference>
+      <Reference Include="SonsSdk">
+        <HintPath>$(GameDir)\_RedLoader\net6\SonsSdk.dll</HintPath>
+      </Reference>
+      <Reference Include="Unity.Addressables">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\Unity.Addressables.dll</HintPath>
+      </Reference>
+      <Reference Include="Unity.InputSystem">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\Unity.InputSystem.dll</HintPath>
+      </Reference>
+      <Reference Include="Unity.ResourceManager">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\Unity.ResourceManager.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\UnityEngine.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.AnimationModule">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\UnityEngine.AnimationModule.dll</HintPath>
+      </Reference>
+      <Reference Include="UnityEngine.CoreModule">
+        <HintPath>..\..\SteamLibrary\steamapps\common\Sons Of The Forest\_Redloader\Game\UnityEngine.CoreModule.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="manifest.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Update="AssetBundles\bobthebuilder">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+      <None Remove="ReleaseBuild\**" />
+    </ItemGroup>
+
+</Project>

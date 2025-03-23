@@ -1,0 +1,121 @@
+ManifestFileVersion: 0
+CRC: 861803767
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 383616df48d9cc84977ef35e5c87d8e3
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 647a2bf34ababe129d2f06f154d3846a
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 383616df48d9cc84977ef35e5c87d8e3
+HashAppended: 0
+ClassTypes:
+- Class: 1
+  Script: {instanceID: 0}
+- Class: 4
+  Script: {instanceID: 0}
+- Class: 21
+  Script: {instanceID: 0}
+- Class: 23
+  Script: {instanceID: 0}
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 33
+  Script: {instanceID: 0}
+- Class: 43
+  Script: {instanceID: 0}
+- Class: 48
+  Script: {instanceID: 0}
+- Class: 65
+  Script: {instanceID: 0}
+- Class: 136
+  Script: {instanceID: 0}
+- Class: 205
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/Assets/PolishedStone/Pillar/PolishedSlabPillarCombined.prefab
+- Assets/Assets/PolishedStone/Beam/PolishedSlabBeamChunkElementD.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementB.prefab
+- Assets/Assets/PolishedStone/Pillar/PolishedSlabPillarChunkElementB.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementE.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementBChunkB.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementDChunkC.prefab
+- Assets/Assets/PolishedStone/Beam/PolishedSlabBeamCombined.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementAChunkA.prefab
+- Assets/Assets/PolishedStone/Window/PolishedSlabWallWindowElementC.prefab
+- Assets/Assets/PolishedStone/Window/PolishedSlabWallWindowElementAChunkA.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementC.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementA.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementA.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementEChunkC.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementCChunkC.prefab
+- Assets/Assets/PolishedStone/Pillar/PolishedSlabPillarChunkElementD.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorCombined.prefab
+- Assets/Assets/PolishedStone/Window/PolishedSlabWallWindowElementEChunkD.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementBChunkC.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementBChunkA.prefab
+- Assets/Assets/PolishedStone/Beam/PolishedSlabBeamChunkElementA.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementEChunkB.prefab
+- Assets/Assets/PolishedStone/Window/PolishedSlabWallWindowElementDChunkD.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementEChunkD.prefab
+- Assets/Assets/PolishedStone/Beam/PolishedSlabBeamChunkElementC.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementAChunkB.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementD.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementAChunkB.prefab
+- Assets/Assets/PolishedStone/Window/PolishedSlabWallWindowElementE.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementCChunkD.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementDChunkD.prefab
+- Assets/Assets/PolishedStone/Beam/PolishedSlabBeamElectricWire.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementBChunkA.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementDChunkA.prefab
+- Assets/Textures/SmoothStone_Normal.png
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementEChunkA.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementAChunkD.prefab
+- Assets/Assets/PolishedStone/Window/PolishedSlabWallWindowElementCChunkD.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementDChunkA.prefab
+- Assets/Assets/PolishedStone/Window/PolishedSlabWallWindowElementCChunkA.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementAChunkC.prefab
+- Assets/Assets/PolishedStone/Pillar/PolishedSlabPillarChunkElementA.prefab
+- Assets/Assets/PolishedStone/Window/PolishedSlabWallWindowElementEChunkA.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementDChunkD.prefab
+- Assets/Assets/PolishedStone/Window/PolishedSlabWallWindowElementA.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementEChunkB.prefab
+- Assets/Assets/PolishedStone/Window/PolishedSlabWallWindowElementDChunkA.prefab
+- Assets/Assets/PolishedStone/Beam/PolishedSlabBeamChunkElementB.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementDChunkB.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementB.prefab
+- Assets/Assets/PolishedStone/Window/PolishedSlabWallWindowElementBChunkA.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementE.prefab
+- Assets/Assets/PolishedStone/Window/PolishedSlabWallWindowElementBChunkD.prefab
+- Assets/Assets/PolishedStone/Window/PolishedSlabWallWindowElementB.prefab
+- Assets/Assets/PolishedStone/Pillar/PolishedSlabPillarChunkElementC.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementEChunkC.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementC.prefab
+- Assets/Assets/PolishedStone/SmoothStoneMaterial.mat
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementCChunkB.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementD.prefab
+- Assets/Textures/SmoothStone.png
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementEChunkD.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementCChunkB.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementBChunkD.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementDChunkB.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementAChunkA.prefab
+- Assets/Textures/SmoothStone_Mask.png
+- Assets/Assets/PolishedStone/Window/PolishedSlabWallWindowElementAChunkD.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementCChunkC.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementBChunkC.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementCChunkA.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementAChunkC.prefab
+- Assets/Assets/PolishedStone/Window/PolishedSlabWallWindowElementD.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementBChunkB.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementDChunkC.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallCombined.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementAChunkD.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementCChunkA.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementEChunkA.prefab
+- Assets/Assets/PolishedStone/Wall/PolishedSlabWallElementCChunkD.prefab
+- Assets/Assets/PolishedStone/Floor/PolishedSlabFloorElementBChunkD.prefab
+Dependencies: []
