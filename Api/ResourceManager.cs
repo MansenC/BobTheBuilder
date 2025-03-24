@@ -102,6 +102,47 @@ namespace BobTheBuilder.Api
         internal Dictionary<int, RegisteredResource> Resources => _resources;
 
         /// <summary>
+        ///     Creates a new held-only resource instance. The held-only resource is based
+        ///     on an existing item data and first renamed, then a new renderable asset is
+        ///     assigned to its pickup. This is the string provided in <i>pickupAssetName</i>.
+        ///     The held type is either rock or log, and if present, the applyHeldPosition action
+        ///     is provided to the registered resource.
+        /// </summary>
+        /// <param name="baseData">The item data to base this resource on.</param>
+        /// <param name="name">The name of the resource.</param>
+        /// <param name="heldType">The held-only type. Cannot be None</param>
+        /// <param name="pickupAssetName">The name of the asset for the pickup prefab.</param>
+        /// <param name="applyHeldPosition">The held item positioner instance.</param>
+        /// <returns></returns>
+        public RegisteredResource CreateResource(
+            ItemData baseData,
+            string name,
+            RegisteredResource.HeldOnlyBaseType heldType,
+            string pickupAssetName,
+            Action<Transform, int> applyHeldPosition = null)
+        {
+            if (heldType == RegisteredResource.HeldOnlyBaseType.None)
+            {
+                throw new ArgumentException("Held type must not be None!");
+            }
+
+            RegisteredResource resource = CreateResourceItem(baseData, name);
+            resource.HeldOnlyType = heldType;
+            resource.ApplyHeldPosition = applyHeldPosition;
+
+            if (heldType == RegisteredResource.HeldOnlyBaseType.Rock)
+            {
+                PickupManager.FixRockLikePickup(resource, pickupAssetName);
+            }
+            else
+            {
+                throw new InvalidOperationException("Non-rock types are not supported yet.");
+            }
+
+            return resource;
+        }
+
+        /// <summary>
         ///     Creates an item data based on the provided instance.
         ///     If desired, creates clones of all of its prefabs that are ready to be modified.
         ///     Will register every prefab clone to the network.

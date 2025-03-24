@@ -163,7 +163,7 @@ public class BobTheBuilder : SonsMod
         }
 
         PickupManager.SpawnResourcePickup(
-            _bobResources.SmoothSlab,
+            _bobResources.CementBag,
             GetSpawnLocation(4, 2),
             Quaternion.identity,
             false);
