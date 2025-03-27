@@ -1,9 +1,9 @@
 ﻿using BobTheBuilder.Api;
 using HarmonyLib;
-using Sons.Animation;
+using Sons.Items.Core;
 using TheForest.Items.Special;
 using TheForest.Utils;
-using UnityEngine;
+using TheForest.Utils.Items;
 
 using LiftCoroutine = TheForest.Items.Special.HeldOnlyItemController.__c__DisplayClass32_0.ObjectCompilerGeneratedNPrivateSealedIEnumerator1ObjectIEnumeratorIDisposableInObGacuObObUnique;
 
@@ -40,10 +40,10 @@ namespace BobTheBuilder.Patches
                     return;
                 }
 
-                var heldItemData = __instance.__4__this.heldItemData;
-                int itemId = heldItemData._itemId;
+                int itemId = __instance.__4__this.heldItemData._itemId;
 
-                var registeredResources = BobTheBuilder.Instance.ResourceManager.Resources;
+                ResourceManager resourceManager = BobTheBuilder.Instance.ResourceManager;
+                var registeredResources = resourceManager.Resources;
                 if (!registeredResources.TryGetValue(itemId, out var resource)
                     || resource.HeldOnlyType == RegisteredResource.HeldOnlyBaseType.None)
                 {
@@ -51,33 +51,21 @@ namespace BobTheBuilder.Patches
                     return;
                 }
 
-                int animatorItemId;
+                ItemData animatorData;
                 if (resource.HeldOnlyType == RegisteredResource.HeldOnlyBaseType.Rock)
                 {
-                    animatorItemId = ResourceManager.RockItemId;
+                    animatorData = resourceManager.RockData;
                 }
                 else
                 {
-                    animatorItemId = ResourceManager.LogItemId;
+                    animatorData = resourceManager.LogData;
                 }
 
-                // We set the animator variables required.
-                Animator animator = LocalPlayer.Animator;
-                animator.SetIntegerID(
-                    AnimationHashes.RightHandHeldItemIdHash,
-                    animatorItemId);
-
-                animator.SetFloatID(
-                    AnimationHashes.RightHandHeldItemIdFloatHash,
-                    animatorItemId);
-
-                // TODO if the item data would have any "equipped animator variables" then
-                // we should apply them here.
-                if (resource.ItemData.EquippedAnimVars != null
-                    && resource.ItemData.EquippedAnimVars.Length != 0)
-                {
-                    throw new InvalidOperationException("Need to handle equipped anim vars.");
-                }
+                ItemAnimatorHashHelper.ApplyAnimVars(
+                    animatorData,
+                    true,
+                    LocalPlayer.Animator,
+                    new Il2CppSystem.Nullable<EquipmentSlot>());
             }
         }
 
@@ -109,7 +97,8 @@ namespace BobTheBuilder.Patches
 
                 int itemId = __instance._heldItemId;
 
-                var registeredResources = BobTheBuilder.Instance.ResourceManager.Resources;
+                ResourceManager resourceManager = BobTheBuilder.Instance.ResourceManager;
+                var registeredResources = resourceManager.Resources;
                 if (!registeredResources.TryGetValue(itemId, out var resource)
                     || resource.HeldOnlyType == RegisteredResource.HeldOnlyBaseType.None)
                 {
@@ -117,33 +106,21 @@ namespace BobTheBuilder.Patches
                     return;
                 }
 
-                int animatorItemId;
+                ItemData animatorData;
                 if (resource.HeldOnlyType == RegisteredResource.HeldOnlyBaseType.Rock)
                 {
-                    animatorItemId = ResourceManager.RockItemId;
+                    animatorData = resourceManager.RockData;
                 }
                 else
                 {
-                    animatorItemId = ResourceManager.LogItemId;
+                    animatorData = resourceManager.LogData;
                 }
 
-                // Note that the integer id must be -1, but the float id must be the item.
-                Animator animator = LocalPlayer.Animator;
-                animator.SetIntegerID(
-                    AnimationHashes.RightHandHeldItemIdHash,
-                    -1);
-
-                animator.SetFloatID(
-                    AnimationHashes.RightHandHeldItemIdFloatHash,
-                    animatorItemId);
-
-                // TODO if the item data would have any "equipped animator variables" then
-                // we should apply them here.
-                if (resource.ItemData.EquippedAnimVars != null
-                    && resource.ItemData.EquippedAnimVars.Length != 0)
-                {
-                    throw new InvalidOperationException("Need to handle equipped anim vars.");
-                }
+                ItemAnimatorHashHelper.ApplyAnimVars(
+                    animatorData,
+                    false,
+                    LocalPlayer.Animator,
+                    new Il2CppSystem.Nullable<EquipmentSlot>());
             }
         }
     }

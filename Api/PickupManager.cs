@@ -11,6 +11,10 @@ using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using RedLoader;
 using Sons.Animation;
 using System.Text;
+using Sons.Ai.Vail;
+using Sons.Inventory;
+using Construction;
+using Construction.Utils;
 
 namespace BobTheBuilder.Api
 {
@@ -24,6 +28,11 @@ namespace BobTheBuilder.Api
         ///     The renderable object within pickup prefabs.
         /// </summary>
         private const string Renderable = "Renderable";
+
+        /// <summary>
+        ///     The child name on the log pickup prefab where the PickUp instance is placed.
+        /// </summary>
+        private const string LogPickupChildName = "Trigger";
 
         /// <summary>
         ///     The layer mask for the held layer.
@@ -65,14 +74,14 @@ namespace BobTheBuilder.Api
             var heldOnlyItems = itemController._heldOnlyItems;
             foreach (RegisteredResource resource in _resourceManager.Resources.Values)
             {
+                int itemId;
                 switch (resource.HeldOnlyType)
                 {
                     case RegisteredResource.HeldOnlyBaseType.Rock:
-                        ControllerItemData newData = CopyDataFor(
-                            GetItemData(heldOnlyItems, ResourceManager.RockItemId),
-                            resource);
-
-                        newDatas.Add(newData);
+                        itemId = ResourceManager.RockItemId;
+                        break;
+                    case RegisteredResource.HeldOnlyBaseType.Log:
+                        itemId = ResourceManager.LogItemId;
                         break;
                     case RegisteredResource.HeldOnlyBaseType.None:
                         continue;
@@ -81,6 +90,12 @@ namespace BobTheBuilder.Api
                         RLog.Debug("Unsupported HeldOnlyType!!!!!!!!!!!!!!!!!!!!!");
                         continue;
                 }
+
+                ControllerItemData newData = CopyDataFor(
+                    GetItemData(heldOnlyItems, itemId),
+                    resource);
+
+                newDatas.Add(newData);
             }
 
             if (newDatas.Count == 0)
@@ -125,8 +140,92 @@ namespace BobTheBuilder.Api
             bool dynamic)
         {
             GameObject prefab = resource.ItemData.PickupPrefab.gameObject;
-            return prefab.GetComponent<PickUp>()
-                .SpawnPickupPrefab(location, rotation, prefab, dynamic);
+            if (prefab.TryGetComponent<PickUp>(out var pickup))
+            {
+                return pickup.SpawnPickupPrefab(location, rotation, prefab, dynamic);
+            }
+
+            Transform logPickupChild = prefab.transform.FindChild(LogPickupChildName);
+            if (logPickupChild == null || !logPickupChild.TryGetComponent<PickUp>(out pickup))
+            {
+                throw new InvalidOperationException(
+                    $"Attempted to spawn pickup {resource.ItemData.Name} " +
+                    $"but no PickUp instance found!");
+            }
+
+            return pickup.SpawnPickupPrefab(location, rotation, prefab, dynamic);
+        }
+
+        /// <summary>
+        ///     Fixes the item prefab for a log-like pickup.
+        /// </summary>
+        /// <param name="resource">The registered resource instance.</param>
+        /// <param name="assetPath">The path to the renderable asset of the log-like.</param>
+        /// <exception cref="InvalidOperationException">If the prefab is not registered.</exception>
+        public static void FixLogLikePickup(RegisteredResource resource, string assetPath)
+        {
+            Transform pickupPrefab = resource.ItemData._pickupPrefab;
+            if (pickupPrefab == null)
+            {
+                return;
+            }
+            else if (resource.PickupBoltId == -1)
+            {
+                throw new InvalidOperationException(
+                    "Cannot fix prefab if not registered in prefab database!");
+            }
+
+            AssetReference reference = new AssetReference(assetPath);
+            if (reference == null)
+            {
+                throw new InvalidOperationException($"Cannot find asset for path {assetPath}!");
+            }
+
+            // We store the reference within the resource.
+            resource.RenderableAsset = reference;
+
+            // Fix up itm id's and instance for the pickup.
+            PickUp pickup = pickupPrefab.FindChild(LogPickupChildName).GetComponent<PickUp>();
+            pickup._itemDataCached = resource.ItemData;
+            pickup._itemId = resource.ItemId;
+
+            // Fix item data on the object physics.
+            var sfx = pickupPrefab.FindChild("ObjectInteractionPhysicsSFX")
+                .GetComponent<ObjectPhysicsInteractionSfx>();
+            
+            sfx._itemData = resource.ItemData;
+            sfx._itemId = resource.ItemId;
+            sfx.enabled = true;
+
+            // Fix the multiplayer bolt entity prefab references.
+            BoltEntity boltEntity = pickupPrefab.GetComponent<BoltEntity>();
+            boltEntity._prefabId = resource.PickupBoltId;
+            boltEntity._serializerGuid = null; // TODO?
+
+            // Fix the item type name for the vail pickup.
+            pickupPrefab.GetComponent<VailPickup>()._itemType = resource.ItemData.Name;
+
+            // Remove all unnecessary components.
+            GameObject.Destroy(pickupPrefab.GetComponent<LogPickupStimuli>());
+            GameObject.Destroy(pickupPrefab.GetComponent<DragLogInteraction>());
+            GameObject.Destroy(pickupPrefab.GetComponent<VisualVariantController>());
+            GameObject.Destroy(pickupPrefab.GetComponent<CutOffQuarters>());
+            GameObject.Destroy(pickupPrefab.GetComponent<CutSplitLength>());
+            GameObject.Destroy(pickupPrefab.GetComponent<DelayedSwapFixer>());
+            GameObject.Destroy(pickupPrefab.GetComponent<DynamicObject>());
+
+            // Instead of keeping the renderer child here, we want to actually destroy it.
+            // Because for some reason, they've decided that this time we're having a fixed mesh.
+            GameObject.Destroy(pickupPrefab.FindChild("Renderer").gameObject);
+
+            // Thenn we re-create it and attach an ItemRenderable ourselves...
+            GameObject renderableInstance = new GameObject(Renderable);
+            renderableInstance.transform.SetParent(pickupPrefab, false);
+
+            // Now we can add the component.
+            ItemRenderable renderable = renderableInstance.AddComponent<ItemRenderable>();
+            renderable._itemId = resource.ItemId;
+            renderable._baseRenderable = reference;
         }
 
         /// <summary>

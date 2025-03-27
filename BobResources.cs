@@ -19,6 +19,11 @@ namespace BobTheBuilder
         public const string CementBagName = "CementBag";
 
         /// <summary>
+        ///     The name Id of a stripped log in full length.
+        /// </summary>
+        public const string StrippedLogFullName = "StrippedLogFull";
+
+        /// <summary>
         ///     The path to the addressable asset of a polished slab item.
         /// </summary>
         private const string PolishedSlabAsset = "PolishedStone/PolishedSlabItem.prefab";
@@ -27,6 +32,11 @@ namespace BobTheBuilder
         ///     The path to the addressable asset of a cement bag.
         /// </summary>
         private const string CementBagAsset = "Items/CementBag.prefab";
+
+        /// <summary>
+        ///     The path to the addressable asset of a stripped log in full length.
+        /// </summary>
+        private const string StrippedLogFullAsset = "StrippedLog/Full.prefab";
 
         /// <summary>
         ///     The positions of the held transforms for polished slabs.
@@ -104,6 +114,11 @@ namespace BobTheBuilder
         private readonly RegisteredResource _cementBagResource;
 
         /// <summary>
+        ///     The resource data for a full length stripped log.
+        /// </summary>
+        private readonly RegisteredResource _strippedLogFull;
+
+        /// <summary>
         ///     Constructs a new instance of this class. Registers and creates all resources.
         /// </summary>
         /// <param name="resourceManager">The resource manager.</param>
@@ -134,10 +149,21 @@ namespace BobTheBuilder
                     transform.localEulerAngles = CementHeldRotations[index];
                     transform.localScale = CementHeldScales[index];
                 });
+
+            _strippedLogFull = resourceManager.CreateResource(
+                resourceManager.LogData,
+                StrippedLogFullName,
+                RegisteredResource.HeldOnlyBaseType.Log,
+                StrippedLogFullAsset,
+                (transform, _) =>
+                {
+                    transform.localRotation = Quaternion.identity;
+                    transform.localScale = 2 * Vector3.one;
+                });
         }
 
         /// <summary>
-        ///     The registered resource instance for smooth slab.
+        ///     The registered resource instance for a smooth slab.
         /// </summary>
         public RegisteredResource SmoothSlab => _smoothSlabResource;
 
@@ -145,6 +171,11 @@ namespace BobTheBuilder
         ///     The cement bag resource.
         /// </summary>
         public RegisteredResource CementBag => _cementBagResource;
+
+        /// <summary>
+        ///     The registered resource instance for a full length stripped log.
+        /// </summary>
+        public RegisteredResource StrippedLogFull => _strippedLogFull;
 
         /// <summary>
         ///     Creates a glass material.

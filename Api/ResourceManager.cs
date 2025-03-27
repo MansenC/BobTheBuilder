@@ -136,7 +136,7 @@ namespace BobTheBuilder.Api
             }
             else
             {
-                throw new InvalidOperationException("Non-rock types are not supported yet.");
+                PickupManager.FixLogLikePickup(resource, pickupAssetName);
             }
 
             return resource;
